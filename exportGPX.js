@@ -12,9 +12,11 @@ function exportData(data = []) {
 
     for (const item of data) {
         const { utc, latInfo, lonInfo, altitude, bearing, speed, batteryLevel, isAppForeground } = item;
-        const point = new Point(latInfo.lat, lonInfo.lon, {
-            // ele: altitude,
+        const point = new Point(parseFloat(latInfo.lat), parseFloat(lonInfo.lon), {
+            ele: altitude,
             time: new Date(utc).toLocaleTimeString(),
+            bearing,
+            speed,
         });
         points.push(point);
     }
