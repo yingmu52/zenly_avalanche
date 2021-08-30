@@ -33,6 +33,8 @@ function exportData(data = []) {
       isAppForeground,
     } = item;
 
+    if (latInfo.delta >= 100 || lonInfo.delta >= 100) continue;
+    
     const point = new Point(latInfo.lat, lonInfo.lon, {
       ele: altitude,
       time: new Date(utc),
